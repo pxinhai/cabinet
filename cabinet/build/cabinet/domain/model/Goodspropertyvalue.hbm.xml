@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-6 15:17:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cabinet.domain.model.Goodspropertyvalue" table="goodspropertyvalue">
+        <id name="goodsPropertyValueId" type="int">
+            <column name="GoodsPropertyValueID" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="cagetroyPropertyId" type="int">
+            <column name="CagetroyPropertyID" not-null="true" />
+        </property>
+        <property name="goodsId" type="int">
+            <column name="GoodsID" not-null="true" />
+        </property>
+        <property name="shortStrValue" type="string">
+            <column name="ShortStrValue" length="2048" not-null="true" />
+        </property>
+        <property name="longStrValue" type="string">
+            <column name="LongStrValue" length="65535" />
+        </property>
+        <property name="dataChangeCreateTime" type="timestamp">
+            <column name="DataChange_CreateTime" length="19" not-null="true" />
+        </property>
+        <property name="dataChangeLastTime" type="timestamp">
+            <column name="DataChange_LastTime" length="19" not-null="true" />
+        </property>
+        <property name="decimalValue" type="big_decimal">
+            <column name="DecimalValue" precision="18" scale="4" not-null="true" />
+        </property>
+        <property name="isDel" type="boolean">
+            <column name="IsDel" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

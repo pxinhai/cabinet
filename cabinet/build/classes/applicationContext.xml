@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+    http://www.springframework.org/schema/aop  
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+   	http://www.springframework.org/schema/cache
+    http://www.springframework.org/schema/cache/spring-cache.xsd
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<context:component-scan base-package="cabinet.web.controller" />
+	<context:component-scan base-package="cabinet.web.manager.controller" />
+	<context:component-scan base-package="cabinet.domain.service" />
+	<context:component-scan base-package="cabinet.domain.repository" />
+	<context:component-scan base-package="cabinet.application" />
+
+	<mvc:annotation-driven />
+	<cache:annotation-driven />
+	<mvc:default-servlet-handler />
+<mvc:interceptors> 
+<mvc:interceptor>   
+ <mvc:mapping path="/manager/**" /> 
+ <mvc:exclude-mapping path="/manager/login"/>
+ <bean class="cabinet.web.manager.controller.SecurityInterceptor" /> 
+ </mvc:interceptor> 
+</mvc:interceptors>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/" />
+		<property name="suffix" value=".jsp" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="tagRepository" class="cabinet.domain.repository.TagRepository">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="PropertyRepository" class="cabinet.domain.repository.PropertyRepository">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="goodsRepository" class="cabinet.domain.repository.goodsRepository">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="infoRepository" class="cabinet.domain.repository.InfoRepository">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="imageRepository" class="cabinet.domain.repository.ImageRepository">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="import*" propagation="REQUIRED" />
+			<tx:method name="*" propagation="NOT_SUPPORTED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="execution(* cabinet.domain.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+	</aop:config>
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean">
+                    <property name="name" value="default"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+	
+</beans>   

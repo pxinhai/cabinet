@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-12-6 16:26:03 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cabinet.domain.model.Info" table="article">
+        <id name="articleId" type="int">
+            <column name="ArticleID" />
+            <generator class="identity" />
+        </id>
+        <property name="title" type="string">
+            <column name="Title" length="256" not-null="true" />
+        </property>
+        <property name="content" type="string">
+            <column name="Content" length="65535" not-null="true" />
+        </property>
+        <property name="dataChangeCreateTime" type="timestamp">
+            <column name="DataChange_CreateTime" length="19" not-null="true" />
+        </property>
+        <property name="dataChangeLastTime" type="timestamp">
+            <column name="DataChange_LastTime" length="19" not-null="true" />
+        </property>
+        <property name="categoryId" type="int">
+            <column name="CategoryID" not-null="true" />
+        </property>
+        <property name="SortOrder" type="int">
+            <column name="SortOrder" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

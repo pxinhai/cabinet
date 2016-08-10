@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cabinet-domain-model"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cabinet-domain-repository"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cabinet-infrastructure"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/spring-beans-4.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/spring-context-4.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/lucene-analyzers-common-5.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/lucene-core-5.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/lucene-queryparser-5.4.0.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/lucene-analyzers-smartcn-5.4.0.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

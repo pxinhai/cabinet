@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-6 15:17:50 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cabinet.domain.model.Goods" table="goods">
+        <id name="goodsId" type="java.lang.Integer">
+            <column name="GoodsID" />
+            <generator class="identity"></generator>
+        </id>
+        <property name="categoryId" type="int">
+            <column name="CategoryID" not-null="true" />
+        </property>
+        <property name="proName" type="string">
+            <column name="ProName" length="512" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="65535" />
+        </property>
+        <property name="dataChangeCreateTime" type="timestamp">
+            <column name="DataChange_CreateTime" length="19" not-null="true" />
+        </property>
+        <property name="dataChangeLastTime" type="timestamp">
+            <column name="DataChange_LastTime" length="19" not-null="true" />
+        </property>
+        <property name="isDel" type="boolean">
+            <column name="IsDel" not-null="true" />
+        </property>
+        <property name="sortOrder" type="int">
+            <column name="SortOrder" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

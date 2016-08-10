@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cabinet-domain-model"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/hibernate-core-4.2.4.Final.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/spring-beans-4.2.3.RELEASE.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cabinet-infrastructure"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/spring-orm-4.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="D:/baidu/cabinet/lib/spring-context-4.2.3.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
